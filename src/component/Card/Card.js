@@ -23,49 +23,31 @@ const Card = (props) => {
             </li>
  
             <li>
-               {props.movie.overview.substring(0,100)}
+               {props.movie.overview.substring(0,150)}
             </li>
 
 
             <li>
-              {props.movie.popularity}
+              Popularity: {props.movie.popularity}
             </li>
 
 
             <li>
-             {props.movie.release_date}
+              Release Date: {props.movie.release_date}
             </li>
-
 
             <li>
-              {props.movie.backdrop_path}
-            </li>
-
-            <li className='cardFoor'>
-
-              <i className="text-slate-500 font-medium">
-        
-                {props.movie.original_language}
-
-              </i>
-
-              <i className="text-slate-500 font-medium">
-               {props.movie.video}
-              </i>
                     
                 <i  className="text-slate-500 font-medium">  
-                {props.movie.vote_average}
+                Votes: {props.movie.vote_average}
                 </i>
 
-                <i  className="text-slate-500 font-medium">
-                  {props.movie.vote_count}
-                </i>
 
             </li> 
 
             <li>
 
-            <button className="px-4 py-1 text-sm text-purple-600 font-semibold rounded-full border border-purple-200 hover:text-white hover:bg-purple-600 hover:border-transparent focus:outline-none focus:ring-2 focus:ring-purple-600 focus:ring-offset-2">More...</button>
+            <button className="px-4 py-1 text-sm text-purple-600 font-semibold rounded-full border border-purple-200 hover:text-white hover:bg-purple-600 hover:border-transparent focus:outline-none focus:ring-2 focus:ring-purple-600 focus:ring-offset-2">Book</button>
 
             </li>
             
