@@ -12,7 +12,7 @@ const Grid = () => {
 
     async () => {
 
-      const [...movies] = await MovieApi.getMoviesList('Lord of the ring');
+      const [...movies] = await MovieApi.discover();
     
       setItem(movies)
 

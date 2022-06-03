@@ -3,6 +3,7 @@ import React   from 'react';
 
 const Card = (props) => {
  
+  const url = 'https://image.tmdb.org/t/p/original'
 
   return (
       <>
@@ -16,6 +17,12 @@ const Card = (props) => {
             </li>
 
             <li>
+              
+              <img src={url+props.movie.poster_path}  loading="lazy"/>
+
+            </li>
+ 
+            <li>
                {props.movie.overview.substring(0,100)}
             </li>
 
@@ -26,10 +33,6 @@ const Card = (props) => {
 
 
             <li>
-              {props.movie.poster_path}
-            </li>
- 
-            <li>
              {props.movie.release_date}
             </li>
 
@@ -38,7 +41,7 @@ const Card = (props) => {
               {props.movie.backdrop_path}
             </li>
 
-            <li>
+            <li className='cardFoor'>
 
               <i className="text-slate-500 font-medium">
         
