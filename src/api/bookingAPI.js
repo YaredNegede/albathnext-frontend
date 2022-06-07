@@ -1,8 +1,19 @@
 import axiosClient from "./axiosClient";
 
-const url = '';
+const url = 'booking/';
 
 const bookingApi = {
+
+    load: () => {
+        const page = {
+            "page": 0,
+            "size": 10,
+            "sort": [
+              "ASC"
+            ]
+          }
+        return axiosClient.post(url+'paged',page);
+    },
 
     book: (params) => {
         return axiosClient.post(url, params);

@@ -10,8 +10,8 @@ const MovieApi = {
         return axiosClient.get(`movie/query?query=${query}`);
     },
    
-    search: (key,value) => {
-        return axiosClient.get(`movie/search?key=${key}&value=${value}`);
+    search: (query) => {
+        return axiosClient.get(`movie/query?query=${query}`);
     },
 
     detail: (id) => {

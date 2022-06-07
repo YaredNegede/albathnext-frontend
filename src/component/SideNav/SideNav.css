@@ -1,0 +1,8 @@
+.SideNav {
+    display: flex;
+    flex-wrap: wrap;
+    background-color: rgb(247, 242, 242);
+    margin: auto;
+    width: 100%;
+    padding: 10px;
+}
