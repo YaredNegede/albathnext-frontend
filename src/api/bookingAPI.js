@@ -20,11 +20,12 @@ const bookingApi = {
     },
    
     cancel: (params) => {
-        return axiosClient.get(url, params);
+        return axiosClient.delete(url+params.id);
     },
 
     update: (params) => {
-        return axiosClient.post(url, params);
+       
+        return axiosClient.put(url+params.id, params);
     }
 }
 

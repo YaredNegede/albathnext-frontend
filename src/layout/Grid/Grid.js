@@ -19,7 +19,6 @@ const Grid = () => {
   const [searchString, setSearchString] = useState("");
 
   const handleOnSearch = (string, results) => {
-    console.log(string, results);
     setItem(results);
   };
 
@@ -30,7 +29,6 @@ const Grid = () => {
 
   const handleOnSelect = (e) => {
     e.preventDefault();
-    console.log("selected");
   }
 
   const formatResult = (item) => {
@@ -55,7 +53,6 @@ const Grid = () => {
     bookingApi.load()
     .then(bks =>{
       const {content} = bks;
-      console.log(" contents is ",content)
       setHistory(content)
       setShowBooking(true)
      
@@ -70,11 +67,14 @@ const Grid = () => {
   const onBook = (movie) => {
     setBook(movie)
     setshow(true)
+    loadBooking()
   }
 
   const onDone = (booking) => {
     setshow(false)
     bookingApi.book(booking)
+    .then(loadBooking())
+    .catch(e=>console.error(e))
   }
 
   const onCancel = ()=>{
@@ -107,7 +107,7 @@ const Grid = () => {
               </div>
             </div>
        
-          </nav>
+       </nav>
 
     <div style={{ display: "flex" }}>
 

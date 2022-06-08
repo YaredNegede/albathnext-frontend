@@ -1,24 +1,24 @@
-import React from "react";
+import React,{useState,useEffect} from "react";
 import './SideNav.css';
 import BookingCard from "../BookingCard/BookingCard"
+import bookingApi from "../../api/bookingAPI";
 
 const SideNav = ({books}) => {
 
-  const handleUpdate = (booking) => {
-    console.log(booking)
-   
-  }
+  const [bokkingLis,set] = useState(books)
 
   const handleDelete = (booking) => {
-    console.log(booking)
+    bookingApi.cancel(booking)
+    books = books.filter(m=> booking.id !== m.id)
+    set(books)
   }
 
   return (
   <>
     <div className="flex flex-col">{  
   
-      books?.map((booked,id) => (
-            <BookingCard key={id} book={booked} onDelete={handleDelete} onUpdate={handleUpdate}/>
+    bokkingLis?.map((booked,id) => (
+            <BookingCard key={id} book={booked} onDelete={handleDelete}/>
           ))
         }
     </div>
