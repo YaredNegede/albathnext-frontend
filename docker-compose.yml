@@ -1,6 +1,6 @@
 version: "2"
 networks:
-  albath:
+  albathanext:
     driver: bridge
 
 services:
@@ -14,19 +14,19 @@ services:
     restart: always
     environment:
       MYSQL_ROOT_PASSWORD: root
-      MYSQL_DATABASE: albath
+      MYSQL_DATABASE: albathanext
       MYSQL_ROOT_HOST: '%'
     ports:
       - '3306:3306'
-    volumes:
-      - '~/dev/dbs-data/mysql:/var/lib/mysql'
+#    volumes:
+#      - '~/dev/dbs-data/mysql:/var/lib/mysql'
     expose:
       - 3306
     networks:
-      - albath
+      - albathanext
 
-  albath:
-    container_name: albath
+  albathanext:
+    container_name: albathanext
     build:
       context: .
     image: adoptopenjdk/openjdk11
@@ -34,6 +34,6 @@ services:
     ports:
       - "80:8080"
     networks:
-      - albath
+      - albathanext
     depends_on:
       - mysqlhost
