@@ -11,7 +11,7 @@ const Home = () => {
 
   const [items, setItem] = useState("");
 
-  const book = []
+  const book = false
 
   const handleOnSearch = (string, results) => {
     console.log(string, results);
@@ -35,11 +35,8 @@ const Home = () => {
             <div className="container flex flex-wrap justify-between items-center mx-auto">
               <div className="hidden justify-between items-center w-full md:flex md:w-auto md:order-1" id="mobile-menu-3">
                 <ul className="flex items-center flex-left mt-4 md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium">
-                  <li>
-                    <a href="#" className="block py-2 pr-4 pl-3 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-5 dark:text-white" aria-current="page">Show Booking</a>
-                  </li>
                   <li >
-                    <div style={{width: 300}} className="block py-2 pr-4 pl-3">
+                    <div style={{width: 600,marginLeft:16}} className="block py-2 pr-4 pl-3">
                     <ReactSearchAutocomplete
                         items={items}
                         fuseOptions={{ keys: ["title"] }}

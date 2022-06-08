@@ -1,31 +1,8 @@
-import React, { useEffect} from "react";
+import React from "react";
 import './SideNav.css';
 import BookingCard from "../BookingCard/BookingCard"
-import bookingApi from "../../api/bookingAPI";
-import {BookingContext} from '../../layout/Home/Home'
 
-const SideNav = () => {
-
-  const books = React.useContext(BookingContext);  
-
-  const load = () => {
-
-    bookingApi.load()
-    .then((m) => {
-      books.push([...m.content])
-    })
-    .catch((err) => {
-      
-      console.err(err);
-    });
-
-  }
-  
-  useEffect(() => {
-
-    load();
-
-  },[]);
+const SideNav = ({books}) => {
 
   const handleUpdate = (booking) => {
     console.log(booking)
@@ -37,12 +14,15 @@ const SideNav = () => {
   }
 
   return (
+  <>
     <div className="flex flex-col">{  
-      books?.map((id) => (
-            <BookingCard key={id} onDelete={handleDelete} onUpdate={handleUpdate}/>
+  
+      books?.map((booked,id) => (
+            <BookingCard key={id} book={booked} onDelete={handleDelete} onUpdate={handleUpdate}/>
           ))
         }
     </div>
+    </>
   );
 
 };

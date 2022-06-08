@@ -12,7 +12,7 @@ const bookingApi = {
               "ASC"
             ]
           }
-        return axiosClient.post(url+'paged',page);
+        return axiosClient.get(url+'paged',page);
     },
 
     book: (params) => {

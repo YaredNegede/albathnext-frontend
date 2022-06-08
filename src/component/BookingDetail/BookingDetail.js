@@ -2,7 +2,7 @@ import './BookingDetail.css';
 import { Formik, Field } from 'formik';
 import React, { useState } from "react";
 
-const BookingDetail = ({activeBooking,onDone}) => {
+const BookingDetail = ({activeBooking,onDone, onCancel}) => {
   const [num, setNum] = useState(0);
   const [dateTime, setDateTime] = useState();
   const [venu, setVenu] = useState("");
@@ -47,25 +47,18 @@ const BookingDetail = ({activeBooking,onDone}) => {
                 >
                   <form className="w-full max-w-lg">
                   <div className="flex flex-col m-6">
-                    <div className="">
+
                       <label className="tracking-wide text-gray-700 text-xs font-bold mb-2">
-                        Movie:  {activeBooking.title}
+                        Movie:  {activeBooking?.title}
                       </label>
-                      
-                    </div>
-                    <div className="">
+
                       <input value={num} onChange ={setNums} className="appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" type="number" placeholder="number of persons"/>
                       
-                    </div>
-                    <div className="">
                       <Field name="venu"  value={venu} onChange={setVenus} className="appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" type="text" placeholder="City Cinema"/>
                       
-                    </div>
-                    <div className="">
-                      <Field  value={dateTime} onChange={setDateTimes} name="dateTime" className="appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" type="date" />
-                    
-                    </div>
-                    <button
+                    <Field  value={dateTime} onChange={setDateTimes} name="dateTime" className="appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" type="date" />
+
+                      <button
                             type="button"
                             onClick={()=>{
                               booking.movie = activeBooking;
@@ -75,7 +68,17 @@ const BookingDetail = ({activeBooking,onDone}) => {
                             className="px-3 py-2 text-xs font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
                           >
                             Update
-                          </button>
+                      </button>
+
+                          <i
+                            type="button"
+                            onClick={()=>{
+                              onCancel()
+                            }
+                            }
+                            >
+                            Cancel 
+                          </i>
                   </div>
                 </form>
                 </Formik>

@@ -11,7 +11,9 @@ const Grid = () => {
 
   const [items, setItem] = useState([]);
   const [show, setshow] = useState(false);
-  const [book, setBook] = useState({});
+  const [showBooking, setShowBooking] = useState(false);
+  const [history, setHistory] = useState([]);
+  const [booking, setBook] = useState({});
 
   const loadMovies = () => {
     MovieApi.discover()
@@ -22,20 +24,35 @@ const Grid = () => {
         console.err(err);
       });
   };
+  
+  const loadBooking = () => {
+    bookingApi.load()
+    .then(bks =>{
+      const {content} = bks;
+      console.log(" contents is ",content)
+      setHistory(content)
+      setShowBooking(true)
+     
+    })
+  }
 
   useEffect(() => {
-    loadMovies();
+      loadMovies();
+      loadBooking();
   }, []);
 
   const onBook = (movie) => {
-    setshow(true)
     setBook(movie)
-  
+    setshow(true)
   }
+
   const onDone = (booking) => {
-    debugger;
     setshow(false)
     bookingApi.book(booking)
+  }
+
+  const onCancel = ()=>{
+    setshow(false)
   }
 
   return (
@@ -44,6 +61,7 @@ const Grid = () => {
     <div style={{ display: "flex" }}>
 
       <div className="Grid">
+       
         {
         items.map((it, i) => (
           <>
@@ -54,9 +72,9 @@ const Grid = () => {
         }
       </div>
 
-       {show && (<BookingDetail activeBooking={book} onDone={onDone}/>)}
-
-        <SideNav key={1}/>
+       {show && (<BookingDetail activeBooking={booking} onDone={onDone} onCancel={onCancel}/>)}
+      
+       {!!history.length && (<SideNav books={history}/>)}
 
     </div>
 
