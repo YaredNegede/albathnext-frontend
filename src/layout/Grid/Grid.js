@@ -28,11 +28,6 @@ const Grid = () => {
     loadMovies()
   };
 
-  const clearSearchBox = () => {
-    setSearchString("");
- 
-  };
-
   const handleOnSelect = (e) => {
     e.preventDefault();
     console.log("selected");
