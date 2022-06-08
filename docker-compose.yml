@@ -1,6 +1,6 @@
 version: "2"
 networks:
-  applifting:
+  albath:
     driver: bridge
 
 services:
@@ -14,7 +14,7 @@ services:
     restart: always
     environment:
       MYSQL_ROOT_PASSWORD: root
-      MYSQL_DATABASE: applifting
+      MYSQL_DATABASE: albath
       MYSQL_ROOT_HOST: '%'
     ports:
       - '3306:3306'
@@ -23,10 +23,10 @@ services:
     expose:
       - 3306
     networks:
-      - applifting
+      - albath
 
-  applifting:
-    container_name: applifting
+  albath:
+    container_name: albath
     build:
       context: .
     image: adoptopenjdk/openjdk11
@@ -34,6 +34,6 @@ services:
     ports:
       - "80:8080"
     networks:
-      - applifting
+      - albath
     depends_on:
       - mysqlhost
